@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/AdventOfCode2023.Core/bin/Debug/net10.0/AdventOfCode2023.Core.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/AdventOfCode2023.Core",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug Unit Tests (Manual)",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}",
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Unit Tests (Automatic)",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${input:spawnTestsGetPid}",
+            "justMyCode": false
+        }
+    ],
+    "inputs": [
+        {
+            "id": "spawnTestsGetPid",
+            "type": "command",
+            "command": "shellCommand.execute",
+            "args": {
+                "useFirstResult": true,
+                "command": "powershell -NoProfile -Command \"$env:VSTEST_HOST_DEBUG='1'; $dotnet = Start-Process dotnet -PassThru -WindowStyle Hidden -ArgumentList 'test','tests/UnitTests/AdventOfCode2023.Tests','--configuration','Debug','--no-build'; $processId = $null; for($i=0; $i -lt 50 -and -not $processId; $i++){ $t = Get-Process -Name testhost -ErrorAction SilentlyContinue; if($t){ $processId = $t.Id; break }; Start-Sleep -Milliseconds 100; }; $processId\""
+            }
+        }
+    ]
+}
