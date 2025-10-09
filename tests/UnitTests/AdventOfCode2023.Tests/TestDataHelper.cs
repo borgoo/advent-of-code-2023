@@ -4,7 +4,7 @@ namespace AdventOfCode2023.Tests;
 /// Helper class for loading test data files.
 /// Follows the convention: Day{N}/Day{N}.Part{P}.{DataType}.txt
 /// </summary>
-public static class TestDataHelper
+internal static class TestDataHelper
 {
     /// <summary>
     /// Loads puzzle input for a specific day and part.
@@ -13,7 +13,7 @@ public static class TestDataHelper
     /// <param name="part">The part number (1-2)</param>
     /// <returns>The content of the puzzle input file</returns>
     /// <exception cref="FileNotFoundException">If the input file doesn't exist</exception>
-    public static string LoadPuzzleInput(int day, int part)
+    internal static string LoadPuzzleInput(int day, int part)
     {
         string fileName = $"Day{day}/Day{day}.Part{part}.PuzzleInput.txt";
         return LoadFile(fileName);
@@ -26,7 +26,7 @@ public static class TestDataHelper
     /// <param name="part">The part number (1-2)</param>
     /// <returns>The content of the sample input file</returns>
     /// <exception cref="FileNotFoundException">If the input file doesn't exist</exception>
-    public static string LoadSampleInput(int day, int part)
+    internal static string LoadSampleInput(int day, int part)
     {
         string fileName = $"Day{day}/Day{day}.Part{part}.SampleInput.txt";
         return LoadFile(fileName);
