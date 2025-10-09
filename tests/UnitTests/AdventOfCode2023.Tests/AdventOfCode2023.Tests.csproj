@@ -24,4 +24,10 @@
     <ProjectReference Include="..\..\..\src\AdventOfCode2023.Core\AdventOfCode2023.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="**\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
