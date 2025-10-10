@@ -26,6 +26,27 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "build-no-restore",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/advent-of-code-2023.sln",
+                "--no-restore",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
             "label": "watch",
             "command": "dotnet",
             "type": "process",

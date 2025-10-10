@@ -24,6 +24,7 @@
             "name": "Debug Unit Tests (Automatic)",
             "type": "coreclr",
             "request": "attach",
+            "preLaunchTask": "build-no-restore",
             "processId": "${input:spawnTestsGetPid}",
             "justMyCode": false
         }
