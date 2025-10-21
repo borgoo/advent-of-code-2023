@@ -27,6 +27,13 @@
             "preLaunchTask": "build-no-restore",
             "processId": "${input:spawnTestsGetPid}",
             "justMyCode": false
+        },
+        {
+            "name": "Debug Unit Tests (Fast Automatic)",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${input:spawnTestsGetPid}",
+            "justMyCode": false
         }
     ],
     "inputs": [
