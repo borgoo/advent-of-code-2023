@@ -49,4 +49,50 @@ internal static class TestDataHelper
 
         return File.ReadAllText(relativePath);
     }
+
+    /// <summary>
+    /// Converts a raw text to a rectangular array.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the array</typeparam>
+    /// <param name="rawText">The raw text to convert</param>
+    /// <param name="trim">Whether to trim (Start and End) the lines</param>
+    /// <returns>The rectangular array</returns>
+    internal static T[,] RawTextToRectangularArray<T>(string rawText, bool trim = false) 
+        where T : notnull {
+
+        string[] lines = rawText.Split(Environment.NewLine);
+        if(trim) lines = [.. lines.Select(line => line.Trim())];
+        int l = lines.Length;
+        T[,] result = new T[l, l];
+        for(int i = 0; i < l; i++) {
+            for(int j = 0; j < l; j++) {
+                result[i, j] = (T)Convert.ChangeType(lines[i][j], typeof(T));
+            }
+        }
+        return result;
+
+    }
+
+    /// <summary>
+    /// Converts a raw text to a bidimensional array.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the array</typeparam>
+    /// <param name="rawText">The raw text to convert</param>
+    /// <param name="trim">Whether to trim (Start and End) the lines</param>
+    /// <returns>The bidimensional array</returns>
+    internal static T[][] RawTextToBidimensionalArray<T>(string rawText, bool trim = false) 
+        where T : notnull {
+
+        string[] lines = rawText.Split(Environment.NewLine);
+        if(trim) lines = [.. lines.Select(line => line.Trim())];
+        int rows = lines.Length;
+        T[][] result = new T[rows][];
+        for(int i = 0; i < rows; i++) {
+            result[i] = [.. lines[i].Select(c => (T)Convert.ChangeType(c, typeof(T)))];
+        }
+        return result;
+
+    }
+
+
 }
