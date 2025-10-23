@@ -15,4 +15,10 @@ internal static class Printer {
         Console.WriteLine();
 
     }
+    internal static void PrintMatrix<T>(T[][] matrix) {
+
+        foreach(var row in matrix) {
+            Console.WriteLine(string.Join(" ", row));
+        }
+    }
 }
