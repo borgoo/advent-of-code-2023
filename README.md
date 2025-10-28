@@ -61,3 +61,31 @@ cd .\tests\UnitTests\AdventOfCode2023.Tests
     dotnet test --filter "Name~Day1Part1_|Day1Part2_" --no-build
 
 ```
+
+## Template Generator (Windows Only)
+
+The project includes a batch script to quickly generate day templates with all necessary files and directory structure.
+
+### Usage
+
+```bash
+# Create new day 18 empty template
+template.bat 18
+
+# Remove/delete day 18
+template.bat 18 -rf
+```
+
+### What it creates
+
+When you run `template.bat 18`, it creates:
+
+- **Documentation**: `docs\Day18\Day18.md`
+- **Source files**: 
+  - `src\AdventOfCode2023.Core\Day18\Day18.Part1.cs`
+  - `src\AdventOfCode2023.Core\Day18\Day18.Part2.cs`
+- **Test files**:
+  - `tests\UnitTests\AdventOfCode2023.Tests\Day18\Day18.Part1.Test.cs`
+  - `tests\UnitTests\AdventOfCode2023.Tests\Day18\Day18.Part2.Test.cs`
+  - `tests\UnitTests\AdventOfCode2023.Tests\Day18\Day18.Part1.SampleInput.txt`
+  - `tests\UnitTests\AdventOfCode2023.Tests\Day18\Day18.Part1.PuzzleInput.txt`
