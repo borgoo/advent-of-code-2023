@@ -50,7 +50,7 @@ if /i "%ACTION%"=="-rf" (
     )
     
     echo.
-    echo Day%DAY% directories removed %ESC%[92m successfully!%ESC%[0m
+    echo Day%DAY% directories removed%ESC%[92m successfully!%ESC%[0m
     echo.
     exit /b 0
 )
@@ -83,104 +83,22 @@ REM 2. Create src directory structure
 mkdir "src\AdventOfCode2023.Core\Day%DAY%" 2>nul
 
 REM Create Part1.cs with template
-type nul > "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo namespace AdventOfCode2023.Core.Day%DAY%;>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo internal static partial class Day%DAY% {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo     internal static class Part1 {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo         internal static long Solve^(string rawText^) {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo             throw new NotImplementedException^();>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo         }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo     }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
-echo }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
+call :CreatePart1File %DAY% "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs"
 echo Created: src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part1.cs
 
 REM Create Part2.cs with template
-type nul > "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo namespace AdventOfCode2023.Core.Day%DAY%;>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo internal static partial class Day%DAY% {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo     internal static class Part2 {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo         internal static long Solve^(string rawText^) {>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo             throw new NotImplementedException^();>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo         }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo.>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo     }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
-echo }>> "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
+call :CreatePart2File %DAY% "src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs"
 echo Created: src\AdventOfCode2023.Core\Day%DAY%\Day%DAY%.Part2.cs
 
 REM 3. Create test directory structure
 mkdir "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%" 2>nul
 
 REM Create Part1.Test.cs with template
-type nul > "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo using static AdventOfCode2023.Core.Day%DAY%.Day%DAY%;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo namespace AdventOfCode2023.Tests.Day%DAY%;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo public class Day%DAY%Part1Test>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     [Test]>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     public void Day%DAY%Part1_Solve_WithSampleInput_ReturnsExpectedValue^(^)>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         string rawText = TestDataHelper.LoadSampleInput^(day: %DAY%, part: 1^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         const long expected = -1;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         var result = Part1.Solve^(rawText^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         Assert.That^(result, Is.EqualTo^(expected^)^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     [Test]>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     public void Day%DAY%Part1_Solve_WithPuzzleInput_ReturnsExpectedValue^(^)>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         string rawText = TestDataHelper.LoadPuzzleInput^(day: %DAY%, part: 1^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         const long expected = -1;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         var result = Part1.Solve^(rawText^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo         Assert.That^(result, Is.EqualTo^(expected^)^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo     }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
-echo }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
+call :CreatePart1TestFile %DAY% "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs"
 echo Created: tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part1.Test.cs
 
 REM Create Part2.Test.cs with template
-type nul > "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo using static AdventOfCode2023.Core.Day%DAY%.Day%DAY%;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo namespace AdventOfCode2023.Tests.Day%DAY%;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo public class Day%DAY%Part2Test>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     [Test]>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     public void Day%DAY%Part2_Solve_WithSampleInput_ReturnsExpectedValue^(^)>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         string rawText = TestDataHelper.LoadSampleInput^(day: %DAY%, part: 1^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         const long expected = -1;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         var result = Part2.Solve^(rawText^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         Assert.That^(result, Is.EqualTo^(expected^)^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     [Test]>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     public void Day%DAY%Part2_Solve_WithPuzzleInput_ReturnsExpectedValue^(^)>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     {>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         string rawText = TestDataHelper.LoadPuzzleInput^(day: %DAY%, part: 1^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         const long expected = -1;>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         var result = Part2.Solve^(rawText^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo.>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo         Assert.That^(result, Is.EqualTo^(expected^)^);>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo     }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
-echo }>> "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
+call :CreatePart2TestFile %DAY% "tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs"
 echo Created: tests\UnitTests\AdventOfCode2023.Tests\Day%DAY%\Day%DAY%.Part2.Test.cs
 
 REM Create empty sample input files
@@ -196,3 +114,102 @@ echo.
 
 endlocal
 
+exit /b 0
+
+REM ========================================
+REM Helper Subroutines
+REM ========================================
+
+:CreatePart1File
+echo namespace AdventOfCode2023.Core.Day%~1; > "%~2"
+echo. >> "%~2"
+echo internal static partial class Day%~1 { >> "%~2"
+echo. >> "%~2"
+echo     internal static class Part1 { >> "%~2"
+echo. >> "%~2"
+echo         internal static long Solve^(string rawText^) { >> "%~2"
+echo. >> "%~2"
+echo             throw new NotImplementedException^(); >> "%~2"
+echo         } >> "%~2"
+echo. >> "%~2"
+echo     } >> "%~2"
+echo } >> "%~2"
+goto :eof
+
+:CreatePart2File
+echo namespace AdventOfCode2023.Core.Day%~1; > "%~2"
+echo. >> "%~2"
+echo internal static partial class Day%~1 { >> "%~2"
+echo. >> "%~2"
+echo     internal static class Part2 { >> "%~2"
+echo. >> "%~2"
+echo         internal static long Solve^(string rawText^) { >> "%~2"
+echo. >> "%~2"
+echo             throw new NotImplementedException^(); >> "%~2"
+echo         } >> "%~2"
+echo. >> "%~2"
+echo     } >> "%~2"
+echo } >> "%~2"
+goto :eof
+
+:CreatePart1TestFile
+echo using static AdventOfCode2023.Core.Day%~1.Day%~1; > "%~2"
+echo. >> "%~2"
+echo namespace AdventOfCode2023.Tests.Day%~1; >> "%~2"
+echo. >> "%~2"
+echo public class Day%~1Part1Test >> "%~2"
+echo { >> "%~2"
+echo     [Test] >> "%~2"
+echo     public void Day%~1Part1_Solve_WithSampleInput_ReturnsExpectedValue^(^) >> "%~2"
+echo     { >> "%~2"
+echo         string rawText = TestDataHelper.LoadSampleInput^(day: %~1, part: 1^); >> "%~2"
+echo         const long expected = -1; >> "%~2"
+echo. >> "%~2"
+echo         var result = Part1.Solve^(rawText^); >> "%~2"
+echo. >> "%~2"
+echo         Assert.That^(result, Is.EqualTo^(expected^)^); >> "%~2"
+echo     } >> "%~2"
+echo. >> "%~2"
+echo     [Test] >> "%~2"
+echo     public void Day%~1Part1_Solve_WithPuzzleInput_ReturnsExpectedValue^(^) >> "%~2"
+echo     { >> "%~2"
+echo         string rawText = TestDataHelper.LoadPuzzleInput^(day: %~1, part: 1^); >> "%~2"
+echo         const long expected = -1; >> "%~2"
+echo. >> "%~2"
+echo         var result = Part1.Solve^(rawText^); >> "%~2"
+echo. >> "%~2"
+echo         Assert.That^(result, Is.EqualTo^(expected^)^); >> "%~2"
+echo     } >> "%~2"
+echo } >> "%~2"
+goto :eof
+
+:CreatePart2TestFile
+echo using static AdventOfCode2023.Core.Day%~1.Day%~1; > "%~2"
+echo. >> "%~2"
+echo namespace AdventOfCode2023.Tests.Day%~1; >> "%~2"
+echo. >> "%~2"
+echo public class Day%~1Part2Test >> "%~2"
+echo { >> "%~2"
+echo     [Test] >> "%~2"
+echo     public void Day%~1Part2_Solve_WithSampleInput_ReturnsExpectedValue^(^) >> "%~2"
+echo     { >> "%~2"
+echo         string rawText = TestDataHelper.LoadSampleInput^(day: %~1, part: 1^); >> "%~2"
+echo         const long expected = -1; >> "%~2"
+echo. >> "%~2"
+echo         var result = Part2.Solve^(rawText^); >> "%~2"
+echo. >> "%~2"
+echo         Assert.That^(result, Is.EqualTo^(expected^)^); >> "%~2"
+echo     } >> "%~2"
+echo. >> "%~2"
+echo     [Test] >> "%~2"
+echo     public void Day%~1Part2_Solve_WithPuzzleInput_ReturnsExpectedValue^(^) >> "%~2"
+echo     { >> "%~2"
+echo         string rawText = TestDataHelper.LoadPuzzleInput^(day: %~1, part: 1^); >> "%~2"
+echo         const long expected = -1; >> "%~2"
+echo. >> "%~2"
+echo         var result = Part2.Solve^(rawText^); >> "%~2"
+echo. >> "%~2"
+echo         Assert.That^(result, Is.EqualTo^(expected^)^); >> "%~2"
+echo     } >> "%~2"
+echo } >> "%~2"
+goto :eof
