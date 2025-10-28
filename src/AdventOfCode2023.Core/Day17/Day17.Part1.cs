@@ -71,7 +71,7 @@ internal static partial class Day17 {
                         int nextY = currentNode.Y + dy;
                         if(nextX < 0 || nextX >= rows || nextY < 0 || nextY >= cols) continue;
                         int nextHeatLoss = currentNode.HeatLoss + (lines[nextX][nextY] - '0');
-                        if(nextHeatLoss >= result) continue;
+                        if(nextHeatLoss >= result) break;
 
                         NodeStatus nextNode = new(nextX, nextY, nextHeatLoss, nextDirection, nextDoneSteps);
                         if(mins.ContainsKey(nextNode.GetKey())){
