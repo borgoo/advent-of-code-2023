@@ -14,24 +14,12 @@ internal static partial class Day23 {
             (-1,0)
         ];
 
-        internal readonly record struct Coordinate(int X, int Y);
+        protected readonly record struct Coordinate(int X, int Y);
 
       
         internal abstract long GetLongestPath(string rawText);
         
-    }
- 
-    internal class Part1 : PartShared { 
-        
-        private static readonly Dictionary<char, (int dx, int dy)> _slopes = new() {
-            {'>' , (0,1)},
-            {'<' , (0,-1)},
-            {'v' , (1,0)},
-            {'^' , (-1,0)}
-
-        };
-
-        private static (Coordinate start, Coordinate end, char[,] grid, int n, int m) ProcessInput(string rawText) {
+        protected static (Coordinate start, Coordinate end, char[,] grid, int n, int m) ProcessInput(string rawText) {
 
             string[] lines = rawText.Split(Environment.NewLine);
             Coordinate start = new(0, lines[0].IndexOf(_empty));
@@ -45,6 +33,18 @@ internal static partial class Day23 {
             return (start, end, grid, lines.Length, lines[0].Length);
 
         }
+    }
+ 
+    internal class Part1 : PartShared { 
+        
+        private static readonly Dictionary<char, (int dx, int dy)> _slopes = new() {
+            {'>' , (0,1)},
+            {'<' , (0,-1)},
+            {'v' , (1,0)},
+            {'^' , (-1,0)}
+
+        };
+
 
         private static int DFS(
             Coordinate curr, 
