@@ -55,3 +55,6 @@ nunit-*.xml
 
 # VS
 .vs/
+
+# Do not commit PuzzleInputs (Part1, Part2, etc.)
+**/Day*/Day*.PuzzleInput.txt
